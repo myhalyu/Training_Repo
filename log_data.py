@@ -4,7 +4,7 @@ file_path = 'D:\Python\Repo\Training_Repo\log_data.txt'
 
 def top_downloader(path):
     with open(file_path) as f:
-        calc_dict = dict()
+        calc_dict = {}
         for line in f:
             ip_date = line.split()[1][:12] + '] ' + line.split()[0]
             size = int(line.split()[2])
@@ -12,11 +12,10 @@ def top_downloader(path):
                 calc_dict[ip_date] = size
             else:
                 calc_dict[ip_date] = calc_dict[ip_date] + size
-    res_dict = dict()
-    size_dict = dict()
+    res_dict = {}
+    size_dict = {}
     for key in calc_dict:
-        date = key.split()[0]
-        ip = key.split()[1]
+        date, ip = key.split()[:1]
         size = calc_dict[key]
         if date not in res_dict:
             res_dict[date] = ip
